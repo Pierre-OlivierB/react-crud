@@ -31,7 +31,12 @@ function User() {
                 <td>{us.name}</td>
                 <td>{us.email}</td>
                 <td>
-                  <Link to={`update/${us.idUser}`} className="btn btn-primary">
+                  <Link
+                    to={`update/${us.id_user}`}
+                    className="btn btn-primary"
+                    name={us.name}
+                    mail={us.email}
+                  >
                     Modifier
                   </Link>
                 </td>
