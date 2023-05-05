@@ -42,7 +42,15 @@ function User() {
                   </Link>
                 </td>
                 <td>
-                  <button className="btn btn-danger">Supprimer</button>
+                  <Link
+                    to={{
+                      pathname: `supprimer/${us.id_user}`,
+                    }}
+                    state={{ name: us.name, mail: us.email }}
+                    className="btn btn-danger"
+                  >
+                    Supprimer
+                  </Link>
                 </td>
               </tr>
             ))}

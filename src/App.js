@@ -4,6 +4,7 @@ import User from "./components/User";
 import CreateUser from "./components/CreateUser";
 import UpdateUser from "./components/UpdateUser";
 import "bootstrap/dist/css/bootstrap.min.css";
+import DeleteUser from "./components/DeleteUser";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<User />} />
             <Route path="/create" element={<CreateUser />} />
             <Route path="/update/:id_user" element={<UpdateUser />} />
+            <Route path="/supprimer/:id_user" element={<DeleteUser />} />
           </Routes>
         </BrowserRouter>
       </div>
