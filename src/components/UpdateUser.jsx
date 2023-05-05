@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
-function UpdateUser({ mail, name }) {
-  const [nom, setNom] = useState("");
-  const [email, setEmail] = useState("");
+function UpdateUser() {
+  const location = useLocation();
+  const userName = location.state.name;
+  const userMail = location.state.mail;
+  const [nom, setNom] = useState(userName);
+  const [email, setEmail] = useState(userMail);
   const { id_user } = useParams();
   const navigate = useNavigate();
   const handleSubmit = (ev) => {
@@ -32,7 +35,7 @@ function UpdateUser({ mail, name }) {
               id="nom"
               placeholder="nom"
               onChange={(e) => setNom(e.target.value)}
-              value={name}
+              value={nom}
             />
           </div>
           <div className="mb-3">
@@ -45,7 +48,7 @@ function UpdateUser({ mail, name }) {
               id="email"
               placeholder="email"
               onChange={(e) => setEmail(e.target.value)}
-              value={mail}
+              value={email}
             />
           </div>
           <button className="btn btn-success">Modifier</button>

@@ -32,10 +32,11 @@ function User() {
                 <td>{us.email}</td>
                 <td>
                   <Link
-                    to={`update/${us.id_user}`}
+                    to={{
+                      pathname: `update/${us.id_user}`,
+                    }}
                     className="btn btn-primary"
-                    name={us.name}
-                    mail={us.email}
+                    state={{ name: us.name, mail: us.email }}
                   >
                     Modifier
                   </Link>
