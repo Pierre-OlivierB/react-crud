@@ -13,7 +13,7 @@ function UpdateUser() {
   const handleSubmit = (ev) => {
     ev.preventDefault();
     axios
-      .put("http://localhost:3001/update/" + id_user, { nom, email })
+      .put("http://localhost:3001/update/" + id_user, { name: nom, email })
       .then((res) => {
         console.log(res);
         navigate("/");
