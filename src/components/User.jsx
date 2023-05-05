@@ -12,8 +12,8 @@ function User() {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div className="d-flex vh-100 bg-primary justify-content-center justify-items-center">
-      <div className="w-50 bg-white">
+    <div className="d-flex vh-90 bg-primary justify-content-center justify-items-center p-5">
+      <div className="w-75 bg-white">
         <Link to="/create" className="btn btn-success">
           New User
         </Link>
