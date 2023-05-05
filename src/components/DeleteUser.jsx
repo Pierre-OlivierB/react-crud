@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -6,8 +6,7 @@ function DeleteUser() {
   const location = useLocation();
   const userName = location.state.name;
   const userMail = location.state.mail;
-  const [nom, setNom] = useState(userName);
-  const [email, setEmail] = useState(userMail);
+
   const { id_user } = useParams();
   const navigate = useNavigate();
   const handleSubmit = (ev) => {
@@ -32,7 +31,7 @@ function DeleteUser() {
               className="form-control"
               id="nom"
               placeholder="nom"
-              value={nom}
+              value={userName}
               readOnly
             />
           </div>
@@ -45,7 +44,7 @@ function DeleteUser() {
               className="form-control"
               id="email"
               placeholder="email"
-              value={email}
+              value={userMail}
               readOnly
             />
           </div>
