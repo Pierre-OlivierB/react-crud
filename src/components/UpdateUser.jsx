@@ -16,7 +16,7 @@ function UpdateUser() {
       .put("http://localhost:3001/update/" + id_user, { name: nom, email })
       .then((res) => {
         console.log(res);
-        navigate("/");
+        navigate("/home");
       });
   };
 

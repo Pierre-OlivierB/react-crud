@@ -13,7 +13,7 @@ function DeleteUser() {
     ev.preventDefault();
     console.log(id_user);
     axios.delete("http://localhost:3001/delete/" + id_user).then(() => {
-      navigate("/");
+      navigate("/home");
     });
   };
 
