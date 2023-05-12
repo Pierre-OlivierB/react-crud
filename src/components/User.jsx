@@ -14,7 +14,7 @@ function User() {
   return (
     <div className="d-flex vh-90 bg-primary justify-content-center justify-items-center p-5">
       <div className="w-75 bg-white">
-        <Link to="/create" className="btn btn-success">
+        <Link to="/" className="btn btn-success">
           New User
         </Link>
         <table className="table">

@@ -19,12 +19,10 @@ function Login() {
   };
   const handleConnect = (ev) => {
     ev.preventDefault();
-    axios
-      .post("http://localhost:3001/login", { name: nom, email, pass })
-      .then((res) => {
-        console.log(res);
-        navigate("/home");
-      });
+    axios.post("http://localhost:3001/login", { email, pass }).then((res) => {
+      console.log(res);
+      navigate("/home");
+    });
   };
 
   return (
