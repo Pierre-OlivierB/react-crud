@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+function getCookies() {
+  var pairs = document.cookie.split(";");
+  var cookies = {};
+  for (var i = 0; i < pairs.length; i++) {
+    var pair = pairs[i].split("=");
+    cookies[(pair[0] + "").trim()] = unescape(pair.slice(1).join("="));
+  }
+  return cookies;
+}
+
 function Login() {
   const [nom, setNom] = useState("");
   const [email, setEmail] = useState("");
@@ -22,8 +32,15 @@ function Login() {
   const handleConnect = (ev) => {
     ev.preventDefault();
     axios.post("http://localhost:3001/login", { email, pass }).then((res) => {
-      console.log(res);
-      navigate("/home");
+      // console.log(document.cookie);
+      var myCookies = getCookies();
+      // console.log(myCookies.tokenco);
+
+      // console.log(res);
+      if (myCookies.tokenco) {
+        return navigate("/home");
+      }
+      alert("Le mail et/ou le mot de passe ne sont pas valide.");
     });
   };
 
