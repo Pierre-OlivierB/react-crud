@@ -1,26 +1,41 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
 function User() {
+  const [admin, setAdmin] = useOutletContext();
   const [user, setUser] = useState([]);
+
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
       .get("http://localhost:3001/select")
-      .then((res) => setUser(res.data))
+      .then((res) => {
+        setUser(res.data);
+      })
       .catch((err) => console.log(err));
   }, []);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleClick = (ev) => {
     ev.preventDefault();
-    document.cookie =
-      "tokenco=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    axios
+      .get("http://localhost:3001/logout")
+      .then((res) => {
+        if (res.data.Status === "Ok") {
+          window.location.reload(true);
+        } else {
+          alert("Erreur");
+        }
+      })
+      .catch((err) => console.log(err));
+    // document.cookie =
+    //   "tokenco=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-    navigate("/login");
+    // navigate("/login");
   };
   return (
     <div className="d-flex vh-90 bg-primary justify-content-center justify-items-center p-5">
+      <h2>Welcome back {admin ? "Commander" : "Follower"}</h2>
       <div className="w-75 bg-white">
         <div className="d-flex justify-content-between align-items-center">
           <Link to="/login" className="btn btn-success">

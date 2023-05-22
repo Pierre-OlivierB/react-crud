@@ -38,6 +38,7 @@ function Login() {
 
       console.log(res.data);
       if (res.data.Status === "Ok") {
+        window.location.reload(true);
         return navigate("/");
       }
       alert("Le mail et/ou le mot de passe ne sont pas valide.");
