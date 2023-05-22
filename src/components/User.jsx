@@ -4,10 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 
 function User() {
   const [user, setUser] = useState([]);
-
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:3001/")
+      .get("http://localhost:3001/select")
       .then((res) => setUser(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -17,13 +17,13 @@ function User() {
     document.cookie =
       "tokenco=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-    navigate("/");
+    navigate("/login");
   };
   return (
     <div className="d-flex vh-90 bg-primary justify-content-center justify-items-center p-5">
       <div className="w-75 bg-white">
         <div className="d-flex justify-content-between align-items-center">
-          <Link to="/" className="btn btn-success">
+          <Link to="/login" className="btn btn-success">
             New User
           </Link>{" "}
           <button className="btn btn-danger" onClick={handleClick}>

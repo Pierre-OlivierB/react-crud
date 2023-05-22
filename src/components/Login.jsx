@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function getCookies() {
-  var pairs = document.cookie.split(";");
-  var cookies = {};
-  for (var i = 0; i < pairs.length; i++) {
-    var pair = pairs[i].split("=");
-    cookies[(pair[0] + "").trim()] = unescape(pair.slice(1).join("="));
-  }
-  return cookies;
-}
+// function getCookies() {
+//   var pairs = document.cookie.split(";");
+//   var cookies = {};
+//   for (var i = 0; i < pairs.length; i++) {
+//     var pair = pairs[i].split("=");
+//     cookies[(pair[0] + "").trim()] = unescape(pair.slice(1).join("="));
+//   }
+//   return cookies;
+// }
 
 function Login() {
   const [nom, setNom] = useState("");
@@ -33,15 +33,12 @@ function Login() {
     ev.preventDefault();
     axios.post("http://localhost:3001/login", { email, pass }).then((res) => {
       // console.log(document.cookie);
-      var myCookies = getCookies();
+      // var myCookies = getCookies();
       // console.log(myCookies.tokenco);
 
-      console.log(res.data.token);
-      if (myCookies.tokenco) {
-        if (myCookies.tokenco === res.data.token) {
-          return navigate("/home");
-        }
-        alert("Probléme de connexion");
+      console.log(res.data);
+      if (res.data.Status === "Ok") {
+        return navigate("/");
       }
       alert("Le mail et/ou le mot de passe ne sont pas valide.");
     });

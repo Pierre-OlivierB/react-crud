@@ -3,6 +3,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
 function UpdateUser() {
+  axios.defaults.withCredentials = true;
   const location = useLocation();
   const userName = location.state.name;
   const userMail = location.state.mail;
@@ -16,7 +17,7 @@ function UpdateUser() {
       .put("http://localhost:3001/update/" + id_user, { name: nom, email })
       .then((res) => {
         console.log(res);
-        navigate("/home");
+        navigate("/");
       });
   };
 

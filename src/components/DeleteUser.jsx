@@ -3,6 +3,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
 function DeleteUser() {
+  axios.defaults.withCredentials = true;
   const location = useLocation();
   const userName = location.state.name;
   const userMail = location.state.mail;
@@ -13,7 +14,7 @@ function DeleteUser() {
     ev.preventDefault();
     console.log(id_user);
     axios.delete("http://localhost:3001/delete/" + id_user).then(() => {
-      navigate("/home");
+      navigate("/");
     });
   };
 
