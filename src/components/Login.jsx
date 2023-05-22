@@ -36,9 +36,12 @@ function Login() {
       var myCookies = getCookies();
       // console.log(myCookies.tokenco);
 
-      // console.log(res);
+      console.log(res.data.token);
       if (myCookies.tokenco) {
-        return navigate("/home");
+        if (myCookies.tokenco === res.data.token) {
+          return navigate("/home");
+        }
+        alert("Probléme de connexion");
       }
       alert("Le mail et/ou le mot de passe ne sont pas valide.");
     });
